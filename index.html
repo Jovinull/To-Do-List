@@ -1,35 +1,28 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
-    <!-- Link para o arquivo CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <div class="container">
         <h1>To-Do List</h1>
-        <!-- Campo para adicionar uma nova tarefa -->
-        <input type="text" id="new-task" placeholder="Add a new task...">
-        <button id="add-task-btn">Add Task</button>
-
-        <!-- Adicionar um menu de filtro de tarefas -->
-        <select id="filter-tasks">
-            <option value="all">All</option>
-            <option value="pending">Pending</option>
-            <option value="completed">Completed</option>
-        </select>
-
-        <!-- Lista de tarefas -->
-        <ul id="task-list">
-            <!-- As tarefas aparecerão aqui -->
-        </ul>
+        <div class="input-group">
+            <input type="text" id="new-task" placeholder="Add a new task">
+            <button id="add-task-btn">Add Task</button>
+        </div>
+        <div class="filters">
+            <select id="filter-tasks">
+                <option value="all">All Tasks</option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+        <ul id="task-list"></ul>
     </div>
 
-    <!-- Link para o arquivo JavaScript -->
     <script src="js/script.js"></script>
 </body>
 </html>

@@ -11,46 +11,33 @@ window.addEventListener('load', loadTasksFromLocalStorage);
 
 // Função para adicionar nova tarefa
 function addTask(taskText = null, completed = false) {
-    // Verifica se estamos adicionando uma tarefa existente ou nova
     const text = taskText ? taskText : taskInput.value.trim();
 
-    // Verifica se o campo de input está vazio
     if (text === "") {
         alert("Please enter a task.");
         return;
     }
 
-    // Cria um novo elemento <li> para a nova tarefa
     const newTask = document.createElement('li');
     newTask.innerHTML = `
-        <span class="task-text">${text}</span>
+        <span class="task-text ${completed ? 'completed' : ''}">${text}</span>
         <button class="delete-btn">Remove</button>
     `;
 
-    // Se a tarefa foi concluída, aplica a classe "completed"
-    if (completed) {
-        newTask.querySelector('.task-text').classList.add('completed');
-    }
-
-    // Adiciona o <li> na lista de tarefas
     taskList.appendChild(newTask);
 
-    // Se é uma tarefa nova, salva no Local Storage
     if (!taskText) {
-        saveTaskToLocalStorage(text);
+        saveTaskToLocalStorage(text, completed);
     }
 
-    // Limpa o campo de input
     taskInput.value = "";
-
-    // Adiciona evento de click para remover e marcar como concluída
     addTaskEvents(newTask);
 }
 
 // Função para salvar tarefa no Local Storage
-function saveTaskToLocalStorage(taskText) {
+function saveTaskToLocalStorage(taskText, completed = false) {
     let tasks = getTasksFromLocalStorage();
-    tasks.push({ text: taskText, completed: false });
+    tasks.push({ text: taskText, completed });
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
@@ -76,8 +63,9 @@ function removeTaskFromLocalStorage(taskText) {
 
 // Função para adicionar os eventos de remover e concluir
 function addTaskEvents(taskItem) {
-    // Evento para marcar como concluída ao clicar no texto da tarefa
     const taskTextElement = taskItem.querySelector('.task-text');
+
+    // Evento para marcar como concluída ao clicar no texto da tarefa
     taskTextElement.addEventListener('click', () => {
         taskTextElement.classList.toggle('completed');
         updateTaskCompletionStatus(taskTextElement.textContent, taskTextElement.classList.contains('completed'));
