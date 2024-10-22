@@ -1,4 +1,6 @@
 /* style.css */
+
+/* Mantém todo o estilo anterior */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -25,7 +27,7 @@ h1 {
 }
 
 #new-task {
-    width: 90%;
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -57,8 +59,31 @@ h1 {
     padding: 10px;
     border-bottom: 1px solid #ccc;
     text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #task-list li:last-child {
     border-bottom: none;
+}
+
+/* Estilo para tarefas concluídas */
+.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* Estilo para o botão de remover */
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
 }
