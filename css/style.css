@@ -27,7 +27,7 @@ h1 {
 }
 
 #new-task {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -86,4 +86,13 @@ h1 {
 
 .delete-btn:hover {
     background-color: #c82333;
+}
+
+/* Estilo para o seletor de filtros */
+#filter-tasks {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
 }
